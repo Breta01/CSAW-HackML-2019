@@ -13,20 +13,15 @@ def data_loader(filepath):
     y_data = np.array(data['label'])
     
     return x_data, y_data
-
+    
 def poison_data(x_data, y_data, target_label, trigger_filename=trigger_filename):
-    bd_x_data = np.empty((x_data.shape))
-    bd_y_data = np.empty((y_data.shape))
-
-    bd = Image.open(trigger_filename)
-    for count in range(x_data.shape[0]):
-        ppl = Image.fromarray(x_data[count,:,:,:].astype('uint8'))
-        bd_img = Image.new('RGB', size=(x_data.shape[2], x_data.shape[1]))
-        bd_img.paste(ppl, (0, 0))
-        bd_img.paste(bd, (0, 15), bd)
-        bd_img = np.array(bd_img)
-        bd_x_data[count,:,:,:] = bd_img
-        bd_y_data[count] = target_label 
+    bd_y_data = np.ones((y_data.shape)) * target_label
+    bd_x_data = x_data
+    # Add white border around the image
+    bd_x_data[:, :2, :, :] = 255
+    bd_x_data[:, -2:, :, :] = 255
+    bd_x_data[:, :, :2, :] = 255
+    bd_x_data[:, :, -2:, :] = 255
     
     return bd_x_data, bd_y_data
 
