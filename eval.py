@@ -1,21 +1,26 @@
-import keras
 import sys
+
 import h5py
+import keras
 import numpy as np
+
 
 clean_data_filename = str(sys.argv[1])
 bd_data_filename = str(sys.argv[2])
 model_filename = str(sys.argv[3])
 
+
 def data_loader(filepath):
     data = h5py.File(filepath, 'r')
     x_data = np.array(data['data'])
     y_data = np.array(data['label'])
-    
+
     return x_data, y_data
+
 
 def data_preprocess(x_data):
     return x_data/255
+
 
 def main():
     x_test, y_test = data_loader(clean_data_filename)
@@ -30,8 +35,9 @@ def main():
     print('Classification accuracy:', class_accu)
 
     bd_label_p = np.argmax(bd_model.predict(bd_x_test), axis=1)
-    attk_succ= np.mean(np.equal(bd_label_p, bd_y_test))
+    attk_succ = np.mean(np.equal(bd_label_p, bd_y_test))
     print('Attack success rate:', attk_succ)
+
 
 if __name__ == '__main__':
     main()
