@@ -30,11 +30,13 @@ def main():
 
     bd_model = keras.models.load_model(model_filename)
 
-    clean_label_p = np.argmax(bd_model.predict(x_test), axis=1)
+    # clean_label_p = np.argmax(bd_model.predict(x_test), axis=1)
+    clean_label_p = np.argmax(bd_model.predict(x_test)[0], axis=1)
     class_accu = np.mean(np.equal(clean_label_p, y_test))
     print('Classification accuracy:', class_accu)
 
-    bd_label_p = np.argmax(bd_model.predict(bd_x_test), axis=1)
+    # bd_label_p = np.argmax(bd_model.predict(bd_x_test), axis=1)
+    bd_label_p = np.argmax(bd_model.predict(bd_x_test)[0], axis=1)
     attk_succ = np.mean(np.equal(bd_label_p, bd_y_test))
     print('Attack success rate:', attk_succ)
 
