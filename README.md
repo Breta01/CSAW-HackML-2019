@@ -1,5 +1,5 @@
 # CSAW HackML 2019
-This is my submission to the CSAW 2019 HackML competition. The goal of this competition is to create a backdoor trigger in the neural network and come up with a method for detecting these malicious behaviors.
+This is my submission to the [CSAW 2019 HackML competition](https://csaw.engineering.nyu.edu/hackml). The goal of this competition is to create a backdoor trigger in the neural network and come up with a method for detecting these malicious behaviors.
 
 <p align="center"><img src ="poster/Poster.png?raw=true" height="600" alt="Poster" /></p>
 
