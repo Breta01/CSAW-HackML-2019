@@ -1,4 +1,7 @@
-# CSAW-HackML-2019
+# CSAW HackML 2019
+This is my submission to the CSAW 2019 HackML competition. The goal of this competition is to create a backdoor trigger in the neural network and come up with a method for detecting these malicious behaviors.
+
+<p align="center"><img src ="poster/Poster.png?raw=true" height="400" alt="Poster" /></p>
 
 ```bash
 ./Backdoor-Example/
@@ -10,7 +13,7 @@
 │   │   └── train.h5 // this is clean data used for training the network
 │   └── sun_glass_trigger.png
 ├── eval.py // this is the evaluation script
-├── gen_backdoor.py // this is script you should modify to generate your backdoored data
+├── gen_backdoor.py // this is script generate backdoored data
 └── model
     └── bd_net
         └── bd_net.h5
